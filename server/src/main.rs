@@ -1,5 +1,8 @@
-use actix_web::{App, HttpServer};
+mod routes;
+mod models;
 
+use actix_web::{App, HttpServer};
+use routes::*;
 
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
@@ -10,6 +13,7 @@ async fn main() -> std::io::Result<()> {
 
     HttpServer::new(|| {
         App::new()
+        .service(os::home_sys)
     })
     .bind((host, port))?
     .run()
