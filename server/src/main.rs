@@ -13,7 +13,7 @@ async fn main() -> std::io::Result<()> {
 
     HttpServer::new(|| {
         App::new()
-        .service(os::home_sys)
+        .service(os::return_os_info)
         .service(memory::return_memory_info)
     })
     .bind((host, port))?
